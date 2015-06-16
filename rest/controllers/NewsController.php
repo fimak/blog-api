@@ -2,11 +2,14 @@
 
 namespace rest\controllers;
 
+use rest\models\News;
+
 
 class NewsController extends BaseController
 {
     public function index()
     {
-        return 'news';
+        $model = new News;
+        return $model->table;
     }
 } 

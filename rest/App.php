@@ -6,6 +6,8 @@ namespace rest;
 class App
 {
     private static $instance;
+    public $config;
+    public $request;
 
     public static function instance()
     {
@@ -20,10 +22,13 @@ class App
     private function __clone() {}
     private function __wakeup() {}
 
-    public function run($request)
+    public function run($config)
     {
-        $className = '\\rest\\controllers\\'. ucfirst($request->controller . 'Controller');
-        $controller = new $className($request);
+        static::$instance->config = $config;
+        static::$instance->request = new \rest\Request;
+
+        $className = '\\rest\\controllers\\'. ucfirst($this->request->controller . 'Controller');
+        $controller = new $className($this->request);
         $controller->action();
     }
 

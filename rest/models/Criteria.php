@@ -1,6 +1,6 @@
 <?php
 
-namespace rest;
+namespace rest\models;
 
 
 class Criteria
