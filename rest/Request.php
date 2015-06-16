@@ -7,7 +7,7 @@ class Request
 {
     public $method;
     public $uri;
-    public $route;
+    public $controller;
     public $params;
     public $id;
 
@@ -20,7 +20,7 @@ class Request
             $this->uri = rtrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), ' /');
         }
         $route = explode('/', ltrim($this->uri, ' /'));
-        $this->route = isset($route[0]) ? $route[0] : 'index';
+        $this->controller = !empty($route[0]) ? $route[0] : 'index';
         $this->params = $_REQUEST;
         $this->id = isset($route[1]) ? $route[1] : null;
     }

@@ -20,9 +20,11 @@ class App
     private function __clone() {}
     private function __wakeup() {}
 
-    public function run($controller)
+    public function run($request)
     {
-        echo $controller->action();
+        $className = '\\rest\\controllers\\'. ucfirst($request->controller . 'Controller');
+        $controller = new $className($request);
+        $controller->action();
     }
 
-} 
+}

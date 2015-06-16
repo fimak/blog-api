@@ -14,7 +14,22 @@ class BaseController
 
     public function action()
     {
-        $action = $this->request->route;
-        return json_encode($this->$action());
+        switch ($this->request->method) {
+            case 'GET':
+                $action = 'index';
+                break;
+            case 'POST':
+                $action = 'create';
+                break;
+            case 'PUT':
+                $action = 'update';
+                break;
+            case 'DELETE':
+                $action = 'delete';
+                break;
+            default:
+                $action = 'index';
+        }
+        echo json_encode($this->$action());
     }
 } 

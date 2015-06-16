@@ -8,23 +8,23 @@ class BaseModel
     public $db;
     public $table;
 
-    public static function find($criteria)
+    public function find()
     {
-        return 'news';
+        return $this->table;
     }
 
-//    public function create()
-//    {
-//
-//    }
-//
-//    public function update($criteria)
-//    {
-//
-//    }
-//
-//    public function delete($criteria)
-//    {
-//
-//    }
+    public function create()
+    {
+        return $this->table;
+    }
+
+    public function update()
+    {
+        return $this->table;
+    }
+
+    public function delete()
+    {
+        return $this->table;
+    }
 } 
