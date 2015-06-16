@@ -6,15 +6,11 @@ namespace rest;
 class App
 {
     private static $instance;
-    protected $request;
-    protected $controller;
 
-    public static function instance($request, $controller)
+    public static function instance()
     {
         if (empty(static::$instance)) {
             static::$instance = new static();
-            static::$instance->request = $request;
-            static::$instance->controller = $controller;
         }
 
         return static::$instance;
@@ -24,9 +20,9 @@ class App
     private function __clone() {}
     private function __wakeup() {}
 
-    public function run()
+    public function run($controller)
     {
-        echo static::$instance->controller->action(static::$instance->request->route);
+        echo $controller->action();
     }
 
 } 

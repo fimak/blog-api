@@ -1,9 +1,9 @@
 <?php
 require(__DIR__.'/rest/Request.php');
+require(__DIR__.'/rest/controllers/BaseController.php');
 require(__DIR__.'/rest/App.php');
 
 $request = new \rest\Request;
-$app = \rest\App::instance($request)->run();
+$controller = new \rest\controllers\BaseController($request);
 
-
-var_dump($app);
+$app = \rest\App::instance()->run($controller);
