@@ -9,4 +9,5 @@ return [
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ],
     ],
+    'partition' => 4,
 ];

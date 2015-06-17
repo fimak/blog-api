@@ -9,7 +9,6 @@ class Request
     public $uri;
     public $controller;
     public $params;
-    public $id;
 
     public function __construct($method = null, $uri = null)
     {
@@ -22,6 +21,6 @@ class Request
         $route = explode('/', ltrim($this->uri, ' /'));
         $this->controller = !empty($route[0]) ? $route[0] : 'index';
         $this->params = $_REQUEST;
-        $this->id = isset($route[1]) ? $route[1] : null;
+        $this->params['id'] = isset($route[1]) ? $route[1] : null;
     }
 } 

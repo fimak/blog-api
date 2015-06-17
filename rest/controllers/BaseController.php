@@ -2,7 +2,12 @@
 
 namespace rest\controllers;
 
-
+/**
+ * Class BaseController
+ * @package rest\controllers
+ *
+ * @property \rest\Request $request
+ */
 class BaseController
 {
     protected $request;
